@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shavae's Birthday Car Fund 🎂🚗</title>
+    <meta name="description" content="Help Shavae reach her dream of getting her first car! Every donation brings her closer to freedom and independence.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-section {
+            position: relative;
+            height: 350px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><rect fill="%23334155" width="800" height="400"/><path fill="%23475569" d="M0 300 Q200 250 400 300 T800 300 L800 400 L0 400 Z"/><ellipse cx="400" cy="200" rx="180" ry="50" fill="%23cbd5e1" opacity="0.3"/><rect x="250" y="120" width="300" height="100" rx="15" fill="%23e2e8f0"/><rect x="220" y="160" width="40" height="40" rx="5" fill="%231e293b"/><rect x="540" y="160" width="40" height="40" rx="5" fill="%231e293b"/><rect x="270" y="185" width="260" height="15" rx="3" fill="%23cbd5e1"/><path d="M 300 220 L 320 240 L 480 240 L 500 220 Z" fill="%23475569"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(400px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            z-index: 1;
+        }
+
+        .hero-emoji {
+            font-size: 3em;
+            margin-top: 10px;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .message {
+            text-align: center;
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .goal-section {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .goal-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .progress-bar-container {
+            background: rgba(255,255,255,0.3);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            width: 0%;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .payment-section {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .payment-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .payment-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cashapp-btn {
+            background: linear-gradient(135deg, #00d54b 0%, #00b341 100%);
+        }
+
+        .zelle-btn {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+
+        .payment-icon {
+            font-size: 1.5em;
+        }
+
+        .thank-you {
+            background: #fef3c7;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f59e0b;
+            margin-bottom: 20px;
+        }
+
+        .thank-you h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .thank-you p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .hashtags {
+            text-align: center;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .car-emoji {
+            font-size: 2em;
+            display: inline-block;
+            animation: drive 2s ease-in-out infinite;
+        }
+
+        @keyframes drive {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .update-section {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .update-section h4 {
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .update-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .update-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .update-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .update-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-notice {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2em;
+            }
+            .goal-amount {
+                font-size: 2em;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="confetti">
+                <div class="confetti-piece" style="left: 10%; animation-delay: 0s; background: #ffd700;"></div>
+                <div class="confetti-piece" style="left: 20%; animation-delay: 0.5s; background: #ff69b4;"></div>
+                <div class="confetti-piece" style="left: 30%; animation-delay: 1s; background: #87ceeb;"></div>
+                <div class="confetti-piece" style="left: 40%; animation-delay: 1.5s; background: #98fb98;"></div>
+                <div class="confetti-piece" style="left: 50%; animation-delay: 2s; background: #dda0dd;"></div>
+                <div class="confetti-piece" style="left: 60%; animation-delay: 0.3s; background: #f0e68c;"></div>
+                <div class="confetti-piece" style="left: 70%; animation-delay: 0.8s; background: #ffa07a;"></div>
+                <div class="confetti-piece" style="left: 80%; animation-delay: 1.3s; background: #add8e6;"></div>
+                <div class="confetti-piece" style="left: 90%; animation-delay: 1.8s; background: #ffb6c1;"></div>
+            </div>
+            <div class="hero-emoji">🎂🎉</div>
+            <div class="hero-title">Shavae's Birthday</div>
+            <div class="hero-subtitle">Car Fund</div>
+            <div class="car-emoji">🚗</div>
+        </div>
+
+        <div class="content">
+            <div class="message">
+                <p>It's my birthday — and this year, I'm celebrating with purpose! Instead of traditional gifts, I'm raising <strong>$6,000</strong> toward my first car — a dream that'll make school, work, and life so much easier.</p>
+                <p style="margin-top: 15px;">Every dollar brings me closer to turning the key to freedom, independence, and a new chapter. If you'd like to be part of this milestone, your gift means the world to me! 💝</p>
+            </div>
+
+            <div class="goal-section">
+                <div>🎯 Goal Amount</div>
+                <div class="goal-amount">$6,000</div>
+                <div style="margin-top: 10px; font-size: 0.95em;">Dream Car: Toyota Camry 🚘</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="progress-text" id="progressText">$0 raised</div>
+                </div>
+            </div>
+
+            <div class="update-section">
+                <h4>💰 Update Progress (Optional)</h4>
+                <div class="update-form">
+                    <input type="number" id="amountRaised" class="update-input" placeholder="Amount raised (e.g., 500)" min="0" max="6000">
+                    <button class="update-btn" onclick="updateProgress()">Update</button>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <a href="https://cash.app/$Shavae369" class="payment-button cashapp-btn" target="_blank" rel="noopener noreferrer">
+                    <span>💵 Cash App: $Shavae369</span>
+                    <span class="payment-icon">→</span>
+                </a>
+                <div class="payment-button zelle-btn" onclick="copyZelle()" style="cursor: pointer;">
+                    <span>💳 Zelle: shavaesmall22@gmail.com</span>
+                    <span class="payment-icon">📋</span>
+                </div>
+            </div>
+
+            <div id="copyNotice" class="copy-notice" style="display: none;">
+                ✅ Zelle email copied! Paste it in your Zelle app.
+            </div>
+
+            <div class="thank-you">
+                <h3>🎁 Thank You Message</h3>
+                <p>Your support is more than just money — it's love, belief, and motivation to keep going. Thank you for celebrating with me and helping me reach this dream! 💫</p>
+            </div>
+
+            <div class="hashtags">
+                ✨ #BirthdayCarFund #GratefulHeart #RoadToMyDreamCar #ShavaesBirthday ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const GOAL = 6000;
+        let currentAmount = 0;
+
+        // Load saved progress
+        window.addEventListener('load', async function() {
+            try {
+                const result = await window.storage.get('carfund-progress');
+                if (result && result.value) {
+                    currentAmount = parseFloat(result.value);
+                    updateProgressDisplay();
+                }
+            } catch (error) {
+                console.log('No saved progress yet');
+            }
+        });
+
+        async function updateProgress() {
+            const input = document.getElementById('amountRaised');
+            const amount = parseFloat(input.value);
+            
+            if (isNaN(amount) || amount < 0 || amount > GOAL) {
+                alert('Please enter a valid amount between $0 and $6,000');
+                return;
+            }
+            
+            currentAmount = amount;
+            
+            try {
+                await window.storage.set('carfund-progress', currentAmount.toString());
+                updateProgressDisplay();
+                input.value = '';
+            } catch (error) {
+                console.error('Could not save progress:', error);
+                updateProgressDisplay();
+            }
+        }
+
+        function updateProgressDisplay() {
+            const percentage = (currentAmount / GOAL) * 100;
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = 
+                `$${currentAmount.toLocaleString()} raised (${Math.round(percentage)}%)`;
+        }
+
+        function copyZelle() {
+            const zelleEmail = 'shavaesmall22@gmail.com';
+            navigator.clipboard.writeText(zelleEmail).then(function() {
+                const notice = document.getElementById('copyNotice');
+                notice.style.display = 'block';
+                setTimeout(function() {
+                    notice.style.display = 'none';
+                }, 3000);
+            }).catch(function() {
+                alert('Zelle: shavaesmall22@gmail.com (tap to select and copy)');
+            });
+        }
+    </script>
+</body>
+</html>
